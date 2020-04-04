@@ -6,7 +6,7 @@ class SearchBar extends React.Component {
   onFormSubmit = e => {
     e.preventDefault(); // prevent the browser from submitting and resetting the form after we hit Enter
 
-    console.log(this.state.term);
+    this.props.onSubmit(this.state.term);
   };
 
   render() {
