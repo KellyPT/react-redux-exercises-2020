@@ -5,8 +5,10 @@ import youtube from '../apis/youtube';
 const KEY = 'AIzaSyBOm6M4tQxg-YEYXerMm60F94d5YnZ-lbI';
 
 class App extends React.Component {
-  onSearchTermSubmit = (searchTerm) => {
-    youtube.get('/search', {
+  state = { videos: [] };
+
+  onSearchTermSubmit = async (searchTerm) => {
+    const response = await youtube.get('/search', {
       params: {
         part: 'snippet',
         maxResults: 5,
@@ -14,12 +16,15 @@ class App extends React.Component {
         type: 'video' // only search for videos
       }
     });
+
+    this.setState({ videos: response.data.items });
   };
 
   render() {
     return (
       <div className="ui container">
-        <SearchBar onSearchTermSubmit={this.onSearchTermSubmit} />
+        <SearchBar onSearchTermSubmit={this.onSearchTermSubmit} />I have
+        {this.state.videos.length} videos
       </div>
     );
   }
