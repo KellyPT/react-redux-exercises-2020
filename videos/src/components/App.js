@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchBar from './SearchBar';
+import VideoList from './VideoList';
 import youtube from '../apis/youtube';
 
 const KEY = 'AIzaSyBOm6M4tQxg-YEYXerMm60F94d5YnZ-lbI';
@@ -10,6 +11,7 @@ class App extends React.Component {
   onSearchTermSubmit = async (searchTerm) => {
     const response = await youtube.get('/search', {
       params: {
+        q: searchTerm,
         part: 'snippet',
         maxResults: 5,
         key: KEY,
@@ -23,8 +25,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="ui container">
-        <SearchBar onSearchTermSubmit={this.onSearchTermSubmit} />I have
-        {this.state.videos.length} videos
+        <SearchBar onSearchTermSubmit={this.onSearchTermSubmit} />
+        <VideoList videos={this.state.videos} />
       </div>
     );
   }
