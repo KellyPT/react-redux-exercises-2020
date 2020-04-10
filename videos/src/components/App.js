@@ -9,6 +9,10 @@ const KEY = 'AIzaSyBOm6M4tQxg-YEYXerMm60F94d5YnZ-lbI';
 class App extends React.Component {
   state = { videos: [], selectedVideo: null };
 
+  componentDidMount() {
+    this.onSearchTermSubmit('children'); // default search term when the application first loads
+  }
+
   onSearchTermSubmit = async (searchTerm) => {
     const response = await youtube.get('/search', {
       params: {
