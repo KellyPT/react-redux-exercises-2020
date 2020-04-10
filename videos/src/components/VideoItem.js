@@ -8,7 +8,7 @@ const VideoItem = ({ video, onVideoSelect }) => {
       <img
         className="image"
         src={snippet.thumbnails.medium.url}
-        alt="loading"
+        alt={snippet.title}
       />
       <div className="content">
         <div className="header">{snippet.title}</div>
