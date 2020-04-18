@@ -2,12 +2,21 @@ import _ from 'lodash';
 import jsonPlaceholder from '../apis/jsonPlaceholder';
 
 export const fetchPostsAndUsers = () => async (dispatch, getState) => {
-  // make sure network call for fetching all posts finishes first before moving to next logic
-  await dispatch(fetchPosts());
-  const userIds = _.uniq(_.map(getState().posts, 'userId'));
+  // // make sure network call for fetching all posts finishes first before moving to next logic
+  // await dispatch(fetchPosts());
+  // const userIds = _.uniq(_.map(getState().posts, 'userId'));
 
-  // dont need await keyword here because we dont need to wait for all ids to be fetched; async await syntax doesnt work with forEach statement
-  userIds.forEach((id) => dispatch(fetchUser(id)));
+  // // dont need await keyword here because we dont need to wait for all ids to be fetched; async await syntax doesnt work with forEach statement
+  // userIds.forEach((id) => dispatch(fetchUser(id)));
+
+  // alternative syntax:
+  await dispatch(fetchPosts());
+
+  _.chain(getState().posts)
+    .map('userId')
+    .uniq()
+    .forEach((id) => dispatch(fetchUser(id)))
+    .value();
 };
 
 export const fetchPosts = () => {
