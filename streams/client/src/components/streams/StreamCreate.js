@@ -1,5 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import { createStream } from '../../actions';
 
 class StreamCreate extends React.Component {
   renderError({ error, touched }) {
@@ -23,7 +25,9 @@ class StreamCreate extends React.Component {
     );
   };
 
-  onSubmit(formValues) {}
+  onSubmit = (formValues) => {
+    this.props.createStream(formValues); // call action creator that triggers API call
+  };
 
   render() {
     // customize Field's props by adding addition props, which will be passed down together with component props in one object
@@ -55,6 +59,8 @@ const validate = (formValues) => {
   return errors;
 };
 
-export default reduxForm({ form: 'streamCreate', validate: validate })(
+const formWrapper = reduxForm({ form: 'streamCreate', validate: validate })(
   StreamCreate
 );
+
+export default connect(null, { createStream })(formWrapper);
