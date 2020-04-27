@@ -4,6 +4,11 @@
       "title": "stream",
       "description": "first stream",
       "id": 1
+    },
+    {
+      "description": "second stream",
+      "title": "stream_2",
+      "id": 2
     }
   ]
 }
