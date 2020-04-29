@@ -21,6 +21,12 @@
       "description": "didn't expect that!",
       "userId": "117207747570775119532",
       "id": 4
+    },
+    {
+      "title": "stream_5",
+      "description": "route with plain route and customized history object",
+      "userId": "117207747570775119532",
+      "id": 5
     }
   ]
 }
