@@ -27,6 +27,12 @@
       "description": "route with plain route and customized history object",
       "userId": "117207747570775119532",
       "id": 5
+    },
+    {
+      "title": "stream_6",
+      "description": "test out shareable component",
+      "userId": "117207747570775119532",
+      "id": 6
     }
   ]
 }
