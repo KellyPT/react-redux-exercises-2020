@@ -9,7 +9,6 @@ class StreamCreate extends React.Component {
   };
 
   render() {
-    // customize Field's props by adding addition props, which will be passed down together with component props in one object
     return (
       <div>
         <h3>Create a Stream</h3>
