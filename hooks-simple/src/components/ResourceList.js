@@ -1,5 +1,5 @@
 import React from 'react';
-import useResources from './useResource';
+import useResources from './useResources';
 
 const ResourceList = ({ resourceType }) => {
   const resources = useResources(resourceType);
